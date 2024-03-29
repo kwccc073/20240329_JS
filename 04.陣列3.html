@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陣列3</title>
+</head>
+
+<body>
+    <script>
+        /* .map(function)
+        迴圈陣列，每個東西都會執行提供的function
+        將每個東西執行function後產生的return值形成一個新的陣列
+        */
+        const numbers = [100, 200, 300]
+        const numbersDouble = numbers.map(value => {
+            return value * 2
+        })
+        console.log(numbers, numbersDouble)
+        // 應用實例
+        const data = [
+            { name: 'A', age: 22 },
+            { name: 'B', age: 29 },
+        ]
+        const dataNew = data.map(value => {
+            /* 會改到原陣列
+            value.job = 'Student' // 每一個Value增加job的欄位，其值皆為"Student"
+            return value*/
+
+            /* 不會改到原陣列
+            return {
+                name: value.name,
+                age: value.age,
+                job: 'Student'
+            }
+            */
+
+            // 上述的縮寫
+            return {
+                ...value,
+                job: 'Student'
+            }
+        })
+        console.log(dataNew, data)
+
+
+        const numbers2 = [100, 200, 300, 400, 500]
+        /*.reduce((累計值,現在值)=> {} , 初始值 )
+        初始值可不設，預設是陣列第一個值*/
+        // 例如：購物車（商品是陣列）總金額
+        const numbers2Total = numbers2.reduce((total, value) => {
+            console.log(total, value)
+            return total + value //return的東西會進到下一次繼續做
+        }, 0)
+        console.log(numbers2Total)
+
+        const numbers3 = [100, 1561, 146513, 1231, 564635, 15641310]
+        /* .sort((a, b)=>{})
+        兩兩比較，a代表後面的值，b代表前面的值
+        return 0 => 順序不變
+        return < 0 => a在前
+        return > 0 => b在前
+        
+        結論：
+        return a-b => 正序
+        return b-a => 倒序
+        */
+        numbers3.sort((a, b) => {
+            console.log(a, b)
+            return a - b
+        })
+        console.log(numbers3)
+
+        // 中文排序`(是依照字元編碼去排的)
+        const cn = ['零', '一', '二', '三', '四', '五']
+        /*.localeCompare 用於比較字元編碼順序
+        a在前 => -1
+        b在前=>1
+        相等=>0
+        */
+        cn.sort((a, b) => a.localeCompare(b))
+        console.log(cn)
+
+        const en = ['aaa', 'bbb', 'zzz', 'ccc', 'fff', 'ddd']
+        en.sort((a, b) => a.localeCompare(b))
+        console.log(en)
+    </script>
+</body>
+
+</html>
