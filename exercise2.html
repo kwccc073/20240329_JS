@@ -11,9 +11,12 @@
     <script>
         // 製作隨機數字 function，提供最小整數和最大整數，回傳一個區間內的隨機整數
         const rand = (min, max) => {
-            // 程式碼...
+            return Math.floor(Math.random() * (max - min))
         }
-
+        let a = prompt('min')
+        let b = prompt('max')
+        console.log(rand(a, b))
+        // 待編輯
     </script>
 </body>
 
